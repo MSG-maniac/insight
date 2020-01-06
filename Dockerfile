@@ -26,5 +26,8 @@ RUN pip install requests==2.5.3 && pip install -r requirement.txt
 COPY srcpm/venv_srcpm/lib/python2.7/site-packages/flask_bootstrap/__init__.py /lib/python2.7/site-packages/flask_bootstrap/__init__.py
 COPY srcpm/venv_srcpm/lib/python2.7/site-packages/werkzeug/datastructures.py /lib/python2.7/site-packages/werkzeug/datastructures.py
 
+# 代码放到容器里
+COPY srcpm /opt/webapp/
+
 # open port
 EXPOSE 5000
