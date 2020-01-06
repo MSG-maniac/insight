@@ -27,7 +27,7 @@ COPY srcpm/venv_srcpm/lib/python2.7/site-packages/flask_bootstrap/__init__.py /l
 COPY srcpm/venv_srcpm/lib/python2.7/site-packages/werkzeug/datastructures.py /lib/python2.7/site-packages/werkzeug/datastructures.py
 
 # 代码放到容器里
-COPY srcpm /opt/webapp/
+COPY mkdir /opt/webapp/srcpm && srcpm /opt/webapp/srcpm
 
 # open port
 EXPOSE 5000
