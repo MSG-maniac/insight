@@ -20,14 +20,14 @@ ADD srcpm/pip.conf ~/.pip/pip.conf
 
 # install python lib env
 WORKDIR /opt/webapp/
-RUN pip install requests==2.5.3 && pip install -r requirement.txt
+RUN pip install requests==2.5.3 && pip install -r requirement.txt && mkdir /opt/webapp/srcpm
 
 # modify lib env
 COPY srcpm/venv_srcpm/lib/python2.7/site-packages/flask_bootstrap/__init__.py /lib/python2.7/site-packages/flask_bootstrap/__init__.py
 COPY srcpm/venv_srcpm/lib/python2.7/site-packages/werkzeug/datastructures.py /lib/python2.7/site-packages/werkzeug/datastructures.py
 
 # 代码放到容器里
-COPY mkdir /opt/webapp/srcpm && srcpm /opt/webapp/srcpm
+COPY srcpm /opt/webapp/srcpm
 
 # open port
 EXPOSE 5000
