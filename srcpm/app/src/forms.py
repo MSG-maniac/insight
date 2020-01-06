@@ -17,7 +17,7 @@ from flask_pagedown.fields import PageDownField
 ''' 下拉选项 '''
 action_choices = [('',''), (u'录入',u'录入'), (u'提交',u'提交')]
 vul_type_level_choices = [('',''), (u'严重', u'严重'), (u'高危', u'高危'), (u'中危', u'中危'), (u'低危', u'低危')]
-source_choices = [('',''), (u'安全部', u'安全部'), (u'YISRC', u'YISRC'), (u'公众平台', u'公众平台'), (u'合作伙伴', u'合作伙伴')]
+source_choices = [('',''), (u'安全部', u'安全部'), (u'SRC', u'SRC'), (u'公众平台', u'公众平台'), (u'合作伙伴', u'合作伙伴')]
 vul_cata_choices = [('',''), (u'代码层面',u'代码层面'), (u'运维层面',u'运维层面')]
 
 
