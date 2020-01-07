@@ -11,7 +11,8 @@ RUN apk add build-base openldap-dev python2-dev mysql-dev
 # install python lib env
 WORKDIR /opt/webapp/
 RUN pip install -r requirement.txt && \
-mkdir /opt/webapp/srcpm && 
+rm -rf /root/.cache/pip && \
+mkdir /opt/webapp/srcpm
 
 # 代码放到容器里
 COPY srcpm /opt/webapp/srcpm
