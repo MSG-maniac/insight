@@ -19,3 +19,4 @@ supervisor==3.3.1
 flask-apscheduler==1.4.0
 python-ldap==3.2.0
 requests==2.5.3
+mysqlclient==1.4.6
