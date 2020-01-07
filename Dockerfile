@@ -20,3 +20,5 @@ COPY srcpm /opt/webapp/srcpm
 ADD srcpm/entrypoint.sh /entrypoint.sh
 # open port
 EXPOSE 5000
+
+CMD /bin/sh /entrypoint.sh
