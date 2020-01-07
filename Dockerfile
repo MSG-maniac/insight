@@ -6,7 +6,7 @@ MAINTAINER Pyshen "pyshen@example.com"
 RUN mkdir -p /opt/webapp/ && mkdir -p ~/.pip/
 ADD srcpm/requirement.txt /opt/webapp/requirement.txt
 
-RUN apk add build-base openldap-dev python2-dev mysql-dev
+RUN apk add build-base openldap-dev python2-dev mysql-dev py-mysqldb
 
 # install python lib env
 WORKDIR /opt/webapp/
