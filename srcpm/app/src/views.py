@@ -150,7 +150,7 @@ def vul_report_add():
 #-----------------------上传图片----------------------------------------------------------
 
 ''' 上传图片后缀白名单设置 '''
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'xlsx', 'xmind'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'xlsx', 'xmind','docx','doc','xls','pdf'])
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS

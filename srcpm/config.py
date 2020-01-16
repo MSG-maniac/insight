@@ -9,13 +9,13 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     #邮件标题前缀
-    SRCPM_MAIL_SUBJECT_PREFIX = u'[洞察]'
+    SRCPM_MAIL_SUBJECT_PREFIX = os.environ.get('SRCPM_MAIL_SUBJECT_PREFIX') or u'[Moka]'
     #上传图片、Excel、Xmind路径设置
     UPLOAD_IMG_FOLDER = os.path.join(basedir, 'app/static/upload/img/')
     UPLOAD_EXCEL_FOLDER = os.path.join(basedir, 'app/static/upload/excel/')
     UPLOAD_XMIND_FOLDER = os.path.join(basedir, 'app/static/upload/xmind/')
     #公司邮箱后缀限制，只能使用公司邮箱注册账号。
-    CORP_MAIL = '@creditease.cn'
+    CORP_MAIL = os.environ.get('CORP_MAIL') or '@creditease.cn'
     #平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
     '''
     示例：
@@ -23,8 +23,7 @@ class Config:
                 'xxx2@creditease.cn',
             ]
     '''
-    CC_EMAIL = [
-            ]
+    CC_EMAIL = os.environ.get('CC_EMAIL') or ['xxx@creditease.cn']
     #PERMANENT_SESSION_LIFETIME = 10
     #登录时勾选记住，cookie路径和名称设置
     REMEMBER_COOKIE_PATH = '/srcpm'
@@ -45,15 +44,14 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = True
     # 连接 mysql URl 设置
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-        ''
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or '127.0.0.1'
 
     # 平台发邮件账号设置
-    SRCPM_MAIL_SENDER = '安全部 <sec_creditease@sina.com>'
+    SRCPM_MAIL_SENDER = os.environ.get('SRCPM_MAIL_SENDER') or '安全部 <sec_creditease@sina.com>'
     
     # 发送邮件的服务器设置，账号密码由系统变量中读取
-    MAIL_SERVER = 'smtp.sina.com'
-    MAIL_PORT = 587
+    MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.sina.com'
+    MAIL_PORT = os.environ.get('MAIL_PORT') or 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get(
         'MAIL_USERNAME') or 'sec_creditease@sina.com'
@@ -62,18 +60,18 @@ class DevelopmentConfig(Config):
 
 # 以生产模式的配置运行，使用生产邮件服务器，并关闭debug模式
 class ProductionConfig(Config):
-    DEBUG = False
+    DEBUG = os.environ.get('DEBUG') or False
     # 连接 mysql URl 设置
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
         ''
 
     # 平台发邮件账号设置
-    SRCPM_MAIL_SENDER = '安全部 <xxx@creditease.cn>'
+    SRCPM_MAIL_SENDER = os.environ.get('SRCPM_MAIL_SENDER') or '安全部 <xxx@creditease.cn>'
     
     # 发送邮件的服务器设置，账号密码由系统变量中读取
-    MAIL_SERVER = 'x.x.x.x'
-    MAIL_PORT = 25
-    MAIL_USE_TLS = False
+    MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'xxx.creditease.cn'
+    MAIL_PORT = os.environ.get('MAIL_PORT') or 25
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') or False
     MAIL_USERNAME = os.environ.get(
         'MAIL_USERNAME') or 'xxx@creditease.cn'
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or ''
